@@ -11,10 +11,7 @@
 #' @export
 #' @examples
 #' # no examples
-#' @import readr
-#' @import dplyr
-#' @import purrr
-#' @import magrittr
+#' @import tidyverse
 
 
 read_episurv_csv <- function(file,col_types = NULL,...){
@@ -86,6 +83,7 @@ dhb_levels <- tibble::tribble(
   "Hawke's Bay", 10,
   "Whanganui", 11,
   "MidCentral",  12,
+  "Hutt Valley", 13,
   "Capital and Coast", 14,
   "Wairarapa", 15,
   "Nelson Marlborough",  16,
@@ -131,12 +129,12 @@ columns <- cols("#" = col_integer(),
   "clinicalReportingSourceOrganisation" = col_character(),
   "clinicalReportingSourcePhone" = col_integer(),
   "createdByUser" = col_character(),
-  "createdDateTime" = col_date(format = "%d/%B/%Y"),
+  "createdDateTime" = col_date(format = "%d/%m/%Y"),
   "dhb" = col_factor(levels = dhb_levels$levels),
   "dhbNorthSouth" = col_integer(),
-  "dateOfBirth" = col_date(format = "%d/%B/%Y"),
+  "dateOfBirth" = col_date(format = "%d/%m/%Y"),
   "died" = col_factor(levels = yes_no_levels),
-  "diedDt" = col_date(format = "%d/%B/%Y"),
+  "diedDt" = col_date(format = "%d/%m/%Y"),
   "diedDtUnknown" = col_factor(levels = yes_no_levels),
   "diedFromDisease" = col_factor(levels = yes_no_levels),
   "diedOther" = col_character(),
@@ -144,7 +142,7 @@ columns <- cols("#" = col_integer(),
   "disRptGrp3" = col_character(),
   "disease" = col_character(),
   "diseaseCause" = col_character(),
-  "earliestDate" = col_date(format = "%d/%B/%Y"),
+  "earliestDate" = col_date(format = "%d/%m/%Y"),
   "epiSurvNumber" = col_character(),
   "ethChinese" = col_factor(levels = yes_no_levels),
   "ethCookIslandMaori" = col_factor(levels = yes_no_levels),
@@ -176,7 +174,7 @@ columns <- cols("#" = col_integer(),
   "hospAddress" = col_character(),
   "hospAddressX" = col_character(),
   "hospAddressY" = col_character(),
-  "hospDt" = col_date(format = "%d/%B/%Y"),
+  "hospDt" = col_date(format = "%d/%m/%Y"),
   "hospDtUnknown" = col_factor(levels = yes_no_levels),
   "hospName" = col_character(),
   "hospTime" = col_character(),
@@ -196,7 +194,7 @@ columns <- cols("#" = col_integer(),
   "meshblock06" = col_integer(),
   "meshblock13" = col_integer(),
   "modifiedByUser" = col_character(),
-  "modifiedDateTime" = col_date(format = "%d/%B/%Y"),
+  "modifiedDateTime" = col_date(format = "%d/%m/%Y"),
   "nhi" = col_character(),
   "nzDep2006" = col_factor(levels = dep_levels,ordered = TRUE),
   "nzDep2013" = col_factor(levels = dep_levels,ordered = TRUE),
@@ -207,7 +205,7 @@ columns <- cols("#" = col_integer(),
   "occupationAsCoded" = col_character(),
   "occupationCode" = col_character(), # keep leading 0s
   "officerName" = col_character(),
-  "onsetDt" = col_date(format = "%d/%B/%Y"),
+  "onsetDt" = col_date(format = "%d/%m/%Y"),
   "onsetDtApprox" = col_factor(levels = yes_no_levels),
   "onsetDtUnknown" = col_factor(levels = yes_no_levels),
   "onsetTime" = col_character(), # come back to this one
@@ -232,7 +230,7 @@ columns <- cols("#" = col_integer(),
   "placeOfWork2Type" = col_character(),
   "priorEthnicity" = col_character(),
   "regionalCouncil" = col_character(),
-  "reportDate" = col_date(format = "%d/%B/%Y"),
+  "reportDate" = col_date(format = "%d/%m/%Y"),
   "reportName" = col_character(),
   "reportOrganisation" = col_character(),
   "reportPhone" = col_character(),
@@ -247,7 +245,7 @@ columns <- cols("#" = col_integer(),
   "suburb" = col_character(),
   "surname" = col_character(),
   "survWeek" = col_integer(),
-  "survWeekEndDate" = col_date(format = "%d/%B/%Y"),
+  "survWeekEndDate" = col_date(format = "%d/%m/%Y"),
   "ta" = col_character(),
   "taNorthSouth" = col_integer(),
   "tbAsymptomatic" = col_factor(levels = yes_no_levels),
@@ -328,7 +326,7 @@ columns <- cols("#" = col_integer(),
 columns$cols <- columns$cols[c(intersect(data_columns,names(columns$cols)))]
 
 if(!is.null(col_types)){
-columns$cols <- purrr::list_merge(columns$cols,!!!col_types$cols)
+columns$cols <- list_merge(columns$cols,!!!col_types$cols)
 }
 
 formatted_data <- type_convert(data,col_types = columns)
