@@ -2,7 +2,9 @@
 % Please edit documentation in R/glimpse_at_case.R
 \name{glimpse_at_case}
 \alias{glimpse_at_case}
-\title{Glimpse at the big picture of the case from EpiSurv}
+\title{Glimpse at the big picture of the case from EpiSurv
+I'm checking whether I can push
+This lets you quickly look at all the fields in a case in your extract}
 \usage{
 glimpse_at_case(data, case, in_browser = FALSE)
 }
@@ -14,11 +16,9 @@ glimpse_at_case(data, case, in_browser = FALSE)
 \item{in_browser}{Boolean, false by default. if true, it opens the case report form in EpiSurv.}
 }
 \description{
+Glimpse at the big picture of the case from EpiSurv
+I'm checking whether I can push
 This lets you quickly look at all the fields in a case in your extract
-}
-\examples{
-# no examples
-
 }
 \keyword{EpiSurv}
 \keyword{cases}
