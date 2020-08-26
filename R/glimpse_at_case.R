@@ -9,6 +9,8 @@
 #' @keywords cases
 #' @export
 #' @examples
+#' @import dplyr
+#' @import tibble
 #' # no examples
 #'
 
@@ -25,6 +27,6 @@ glimpse_at_case <- function(data,case,in_browser = FALSE){
           ),
       browser = NULL)
   }else{
-  return(tibble::glimpse(case_data))
+  return(glimpse(case_data))
   }
 }

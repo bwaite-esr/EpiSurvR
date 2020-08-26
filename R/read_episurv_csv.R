@@ -11,7 +11,12 @@
 #' @export
 #' @examples
 #' # no examples
-#' @import tidyverse
+#' @import tibble
+#' @import dplyr
+#' @import readr
+#' @import magrittr
+#' @import rlang
+#' 
 
 
 read_episurv_csv <- function(file,col_types = NULL,...){
