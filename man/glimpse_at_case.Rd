@@ -20,5 +20,8 @@ Glimpse at the big picture of the case from EpiSurv
 I'm checking whether I can push
 This lets you quickly look at all the fields in a case in your extract
 }
+\examples{
+# no examples
+}
 \keyword{EpiSurv}
 \keyword{cases}

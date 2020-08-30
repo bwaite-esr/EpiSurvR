@@ -9,10 +9,9 @@
 #' @keywords cases
 #' @export
 #' @examples
+#' # no examples
 #' @import dplyr
 #' @import tibble
-#' no examples
-#'
 
 
 glimpse_at_case <- function(data,case,in_browser = FALSE){
