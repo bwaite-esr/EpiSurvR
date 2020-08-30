@@ -29,10 +29,14 @@ trim_episurv_numbers <- function(data,...) {
     warning("Something in your variables doesn't look like an EpiSurvNumber.",
             " This may cause unexpected outputs.",call. = FALSE)
   }
+  data <- mutate(data,index = row_number())
+  originals <- data %>% select(index,...)
+  data <- data%>%
+    mutate_at(vars(...),~substr(.,1,9)) %>% 
+    left_join(originals,by="index",suffix = c("","_original")) %>% 
+    select(-index)
 
-  data %>%
-    mutate_at(vars(...),~substr(.,1,9))
-
-
+  return(data)
 
 }
+data <- data %>% trim_episurv_numbers(epiSurvNumber)
