@@ -11,7 +11,7 @@
 #' @examples
 #' @import dplyr
 #' @import tibble
-#' # no examples
+#' no examples
 #'
 
 
