@@ -40,4 +40,3 @@ trim_episurv_numbers <- function(data,...) {
   return(data)
 
 }
-data <- data %>% trim_episurv_numbers(epiSurvNumber)
