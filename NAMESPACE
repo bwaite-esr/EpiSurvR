@@ -3,7 +3,6 @@
 export(glimpse_at_case)
 export(passtest)
 export(trim_episurv_numbers)
-import("#")
 import(dplyr)
 import(examples)
 import(magrittr)
