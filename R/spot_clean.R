@@ -12,6 +12,7 @@
 #' # no examples
 #' @import dplyr
 #' @import magrittr
+#' @import rlang
 #' 
 
 spot_clean <- function(data,adjustments){
@@ -21,7 +22,7 @@ spot_clean <- function(data,adjustments){
     temp <- data %>% filter(eval(i$condition)) 
     index <- temp$index
     adj <- temp %>% mutate(
-      !!!eval(i$change)
+     !!!eval_tidy(i$change)
     )
     
     data[index,] <- adj
@@ -29,4 +30,5 @@ spot_clean <- function(data,adjustments){
   }
   return(data)
 }
+
 

@@ -11,9 +11,12 @@
 #' @examples
 #' # no examples
 #' 
+#' @import rlang
+#' 
+
 correction <- function(given_cond,given_edit){
   list(
-    condition = expression(given_cond),
-    change = expression(given_edit)
+    condition = enquo(given_cond),
+    change = enquo(given_edit)
   )
 }
