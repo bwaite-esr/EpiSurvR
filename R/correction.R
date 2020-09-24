@@ -14,6 +14,6 @@
 correction <- function(given_cond,given_edit){
   list(
     condition = expression(given_cond),
-    change = expresson(given_edit)
+    change = expression(given_edit)
   )
 }
