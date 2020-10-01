@@ -1,7 +1,7 @@
 #' Count Yesses in selected columns.
 #'
 #' This function takes selected columns and checks if Yes is in each row.
-#' Unfortunately at the moment it needs the first argument "." if used within mutate
+
 #'
 #'
 #' @param data your extract
