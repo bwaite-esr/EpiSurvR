@@ -17,14 +17,12 @@
 #' # no examples
 #' @import dplyr
 #' @import magrittr
+#' @import tibble
 #' 
 
-is_yes <- function(data,...,operation = "any"){
+is_yes <- function(...,operation = "any"){
   
-  if(! "data.frame" %in% class(data)){
-    stop("First argument isn't a data.frame. if using this function within mutate, start with \".\"")
-  }
-  
+  data <- tibble(...)
   data <- data %>% 
     select(...) %>% 
     mutate_all(~recode(.,"Yes"=1,.default=0)) %>% 

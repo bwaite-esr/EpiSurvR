@@ -4,17 +4,17 @@
 \alias{is_yes}
 \title{Count Yesses in selected columns.}
 \usage{
-is_yes(data, ..., operation = "any")
+is_yes(..., operation = "any")
 }
 \arguments{
-\item{data}{your extract}
-
 \item{...}{variables you want checked.}
 
 \item{operation}{a string - one of the following:
 "any" returns TRUE if at least 1 Yes present.
 "all" returns TRUE only if all columns are Yes
 "n" returns the number of Yesses in the row.}
+
+\item{data}{your extract}
 }
 \description{
 This function takes selected columns and checks if Yes is in each row.
