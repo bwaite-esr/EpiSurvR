@@ -16,6 +16,7 @@ group_ages(age_vctr, age_breaks, age_labels)
 \description{
 This function takes an ag column, breaks and labels,
 and returns the appropriate age groups
+age breaks are automatically given 0 and Inf as limits.
 }
 \examples{
 # no examples

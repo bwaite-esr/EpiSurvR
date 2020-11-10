@@ -2,7 +2,7 @@
 #'
 #' This function takes an ag column, breaks and labels,
 #' and returns the appropriate age groups
-
+#' age breaks are automatically given 0 and Inf as limits.
 #'
 #'
 #' @param age_vctr the age column
@@ -25,7 +25,7 @@ group_ages <- function(age_vctr,age_breaks,age_labels){
   if(class(age_vctr) == "character"){
     
     # and need converting from "## y/m/d" format
-    if(any(is.na(as.numeric(age_vctr)))){ 
+    if(any(is.na(suppressWarnings(as.numeric(age_vctr))))){ 
       
       fract <- map_dbl(
         str_match(age_vctr,"[:lower:]"),
@@ -52,7 +52,7 @@ group_ages <- function(age_vctr,age_breaks,age_labels){
   # this checks if you're trying to look for e.g. 6 months,
   # but only have whole years in your column
   # isn't necessarily a problem, but best to warn people
-  if(is_integer(age_vctr) & any(cut_list %%1 != 0)){
+  if(is_integer(age_vctr) & any(age_breaks %%1 != 0)){
     warning("You're trying to cut to sub-year intervals,\nbut your age column only contains integer years.\nJust a heads up.")
   }
   
