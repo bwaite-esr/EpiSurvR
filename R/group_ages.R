@@ -22,7 +22,7 @@
 group_ages <- function(age_vctr,age_breaks,age_labels){
   
   # if the given ages are a character...
-  if(str(age_vctr) == "character"){
+  if(class(age_vctr) == "character"){
     
     # and need converting from "## y/m/d" format
     if(any(is.na(as.numeric(age_vctr)))){ 
@@ -58,7 +58,7 @@ group_ages <- function(age_vctr,age_breaks,age_labels){
   
   # then a simple cut.
   # I would like to auto-generate the labels at some point.
-  return_age_groups <- cut(age_vctr,breaks = age_breaks,labels = age_labels)
+  return_age_groups <- cut(age_vctr,breaks = c(0,age_breaks,Inf),labels = age_labels)
   
   return_age_groups
 }
